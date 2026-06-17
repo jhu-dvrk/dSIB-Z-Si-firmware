@@ -1,11 +1,24 @@
+BUILD_DIR ?= build-firmware
+TOOLCHAIN ?= cmake/gcc-arm-none-eabi.cmake
+BUILD_TYPE ?= Release
+
 all: build
 
-build:
-	mkdir -p build
-	arduino-cli compile --build-path build
+configure:
+	cmake -S . -B $(BUILD_DIR) \
+		-DCMAKE_TOOLCHAIN_FILE=$(TOOLCHAIN) \
+		-DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
 
-dfu:
-	dfu-util -a 0 -D build/dSIB-Z-Si-firmware.ino.bin -s 0x08000000
+build: configure
+	cmake --build $(BUILD_DIR) -j
 
+flash: build
+	cmake --build $(BUILD_DIR) --target flash
 
-.PHONY: all build dfu
+dfu: build
+	cmake --build $(BUILD_DIR) --target dfu
+
+clean:
+	cmake --build $(BUILD_DIR) --target clean
+
+.PHONY: all configure build flash dfu clean

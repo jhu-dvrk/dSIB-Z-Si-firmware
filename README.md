@@ -33,10 +33,10 @@ cmake --build build-firmware --target flash
 
 ADC inputs are sampled with 12-bit resolution and 256x hardware oversampling:
 
-- USART1 `PA9/PA10`, ECM ID `0x04`: `PA0` pot1, `PA1` pot2
-- USART2 `PB3/PA15`, PSM1 ID `0x06`: `PB0` pot1, `PB1` pot2
+- USART1 `PA9/PA10`, ECM ID `0x04`: `PB0` pot1, `PB1` pot2
+- USART2 `PB3/PA15`, PSM1 ID `0x06`: `PA6` pot1, `PA7` pot2
 - USART3 `PB10/PB11`, PSM2 ID `0x08`: `PA4` pot1, `PA5` pot2
-- LPUART1 `PA2/PA3`, PSM3 ID `0x0a`: `PA6` pot1, `PA7` pot2
+- LPUART1 `PA2/PA3`, PSM3 ID `0x0a`: `PA0` pot1, `PA1` pot2
 
 Each UART streams 12-byte packets at `115200 8N1`:
 

@@ -23,10 +23,10 @@ typedef struct {
 } StreamPort;
 
 static const StreamPort s_ports[k_uart_count] = {
-  {&huart1,    &g_adc1_samples[0], &g_adc1_samples[1], 0x04u},
-  {&huart2,    &g_adc1_samples[2], &g_adc1_samples[3], 0x06u},
+  {&huart1,    &g_adc1_samples[2], &g_adc1_samples[3], 0x04u},
+  {&huart2,    &g_adc2_samples[2], &g_adc2_samples[3], 0x06u},
   {&huart3,    &g_adc2_samples[0], &g_adc2_samples[1], 0x08u},
-  {&hlpuart1, &g_adc2_samples[2], &g_adc2_samples[3], 0x0Au},
+  {&hlpuart1, &g_adc1_samples[0], &g_adc1_samples[1], 0x0Au},
 };
 
 static uint8_t s_uart_tx[k_uart_count][k_packet_size];
